@@ -12,16 +12,16 @@ Primary use:	Salon Business
 all Css defined in this css
 -------------------------------------------------------------------*/
 
-@import url("/styles.css");
-@import url("rap.css");
-@import url("cker.css");
-@import url("ox.css");
-@import url("ss");
-@import url("css");
-@import url("e.css");
-@import url("blePortfolio.css");
+@import url("./style.css");
+@import url("./bootstrap.css");
+@import url("./datepicker.css");
+@import url("./lightbox.css");
+@import url("./menu.css");
+@import url("./slick.css");
+@import url("./animate.css");
+@import url("./filtrablePortfolio.css");
 
 /* revolution slider */
-@import url("/navigation.css");
-@import url("/settings.css");
-@import url("/layers.css");
+@import url("./navigation.css");
+@import url("./settings.css");
+@import url("./layers.css");

@@ -20,6 +20,7 @@ all Css defined in this css
 @import url("./slick.css");
 @import url("./animate.css");
 @import url("./filtrablePortfolio.css");
+@import url("./custom.css");
 
 /* revolution slider */
 @import url("./navigation.css");

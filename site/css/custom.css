@@ -1,3 +1,11 @@
 .titile-bg {
     padding: 9px!important;
 }
+
+option {
+    background: black;
+}
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}

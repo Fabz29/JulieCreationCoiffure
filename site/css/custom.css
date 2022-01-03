@@ -9,3 +9,7 @@ option {
 ::-webkit-calendar-picker-indicator {
     filter: invert(1);
 }
+
+.logo{
+    padding: 0!important;
+}

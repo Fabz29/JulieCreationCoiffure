@@ -9,6 +9,6 @@ services:
             - '443:443'
         volumes:
             - ./front/:/var/www/
-#            - ./certbot/letsencrypt/:/etc/letsencrypt/
+            - ./certbot/letsencrypt/:/etc/letsencrypt/
             - ./front/nginx.conf:/etc/nginx/conf.d/default.conf
         restart: always

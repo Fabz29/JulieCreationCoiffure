@@ -3,12 +3,12 @@ version: '3'
 services:
     website:
         build:
-            context: .
+            context: ./front/Dockerfile
         ports:
             - '80:80'
             - '443:443'
         volumes:
-            - ./site/:/var/www/
+            - ./front/:/var/www/
 #            - ./certbot/letsencrypt/:/etc/letsencrypt/
-            - ./nginx.conf:/etc/nginx/conf.d/default.conf
+            - ./front/nginx.conf:/etc/nginx/conf.d/default.conf
         restart: always

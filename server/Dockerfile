@@ -1,7 +1,6 @@
-FROM nginx:alpine
+FROM php:alpine
 
-RUN rm -rf /var/www/*
-COPY ./site /var/www
+COPY . /var/www
 
 # Configuring nginx
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf

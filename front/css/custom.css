@@ -13,3 +13,11 @@ option {
 .logo{
     padding: 0!important;
 }
+
+.btn[disabled] {
+    background-color: black!important;
+}
+
+.submitbtn {
+    width: auto;
+}

@@ -2,3 +2,4 @@
 certbot
 certbot.sh
 .env
+docker-compose.yaml

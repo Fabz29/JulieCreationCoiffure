@@ -16,7 +16,7 @@ $senderName = 'Julie Creation Coiffure';
 
 // Replace recipient@example.com with a "To" address. If your account
 // is still in the sandbox, this address must be verified.
-$recipient = 'commercial.fabien.29@gmail.com';
+$recipient = 'juliezanetti3@gmail.com';
 
 // Replace smtp_username with your Amazon SES SMTP user name.
 $usernameSmtp = $_ENV['SMTP_USER'];

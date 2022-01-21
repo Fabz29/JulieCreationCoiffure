@@ -21,7 +21,7 @@
             // if nothing is selected, return nothing; can't chain anyway
             if ( !this.length ) {
                 if ( options && options.debug && window.console ) {
-                    console.warn( "Nothing selected, can't validate, returning nothing." );
+                    console.warn( "Rien séléctionné" );
                 }
                 return;
             }
@@ -310,22 +310,22 @@
         },
 
         messages: {
-            required: "This field is required.",
-            remote: "Please fix this field.",
-            email: "Please enter a valid email address.",
-            url: "Please enter a valid URL.",
-            date: "Please enter a valid date.",
-            dateISO: "Please enter a valid date ( ISO ).",
-            number: "Please enter a valid number.",
-            digits: "Please enter only digits.",
-            creditcard: "Please enter a valid credit card number.",
-            equalTo: "Please enter the same value again.",
-            maxlength: $.validator.format( "Please enter no more than {0} characters." ),
-            minlength: $.validator.format( "Please enter at least {0} characters." ),
-            rangelength: $.validator.format( "Please enter a value between {0} and {1} characters long." ),
-            range: $.validator.format( "Please enter a value between {0} and {1}." ),
-            max: $.validator.format( "Please enter a value less than or equal to {0}." ),
-            min: $.validator.format( "Please enter a value greater than or equal to {0}." )
+            required: "Ce champs est requis.",
+            remote: "Corriger ce champs.",
+            email: "Indiquer une adresse email valide.",
+            url: "Indiquer une URL valide.",
+            date: "Indiquer une date valide.",
+            dateISO: "Indiquer une date valide ( ISO ).",
+            number: "Indiquer un numéro valide.",
+            digits: "Indiquer seulement des caractères alpha-numérique.",
+            creditcard: "Indiquer un numéro de carte valide.",
+            equalTo: "Les deux valeurs doivent correspondres.",
+            maxlength: $.validator.format( "N'indiquer pas de plus de {0} caractères." ),
+            minlength: $.validator.format( "Indiquer au moins {0} caractères." ),
+            rangelength: $.validator.format( "Indiquer une valeur entre {0} et {1}." ),
+            range: $.validator.format( "Indiquer une valeur entre {0} et {1}." ),
+            max: $.validator.format( "Indiquer une valeur inférieur ou égale à {0}." ),
+            min: $.validator.format( "Indiquer une valeur supérieur ou égale à {0}." )
         },
 
         autoCreateRanges: false,

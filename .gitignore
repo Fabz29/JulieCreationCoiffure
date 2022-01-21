@@ -1,3 +1,4 @@
 .idea
 certbot
 certbot.sh
+.env

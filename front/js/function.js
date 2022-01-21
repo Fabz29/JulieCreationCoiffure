@@ -15,8 +15,8 @@ $(document).ready(function () {
     'use strict';
 
     // jQuery for page scrolling feature - requires jQuery Easing plugin
-    $(function() {
-        $('body').on('click', '.page-scroll a', function(event) {
+    $(function () {
+        $('body').on('click', '.page-scroll a', function (event) {
             var $anchor = $(this);
             $('html, body').stop().animate({
                 scrollTop: $($anchor.attr('href')).offset().top
@@ -33,7 +33,7 @@ $(document).ready(function () {
     })
 
     // Parallaxe  function
-    $('#parallax-2').parallax("50%",0.5);
+    $('#parallax-2').parallax("50%", 0.5);
 
     // Carousel mini slider function
     $('.responsive').slick({
@@ -81,13 +81,13 @@ $(document).ready(function () {
     // mobile menu function
     $("#mobile-menu").mobileMenu({
         MenuWidth: 250,
-        SlideSpeed : 300,
-        WindowsMaxWidth : 767,
-        PagePush : true,
-        FromLeft : false,
-        Overlay : true,
-        CollapseMenu : true,
-        ClassName : "mobile-menu"
+        SlideSpeed: 300,
+        WindowsMaxWidth: 767,
+        PagePush: true,
+        FromLeft: false,
+        Overlay: true,
+        CollapseMenu: true,
+        ClassName: "mobile-menu"
     });
 
     // Gellery Portfolio function
@@ -104,57 +104,51 @@ $(document).ready(function () {
         prevText: '&#x3c;Préc',
         nextText: 'Suiv&#x3e;',
         currentText: 'Aujourd\'hui',
-        monthNames: ['Janvier','Fevrier','Mars','Avril','Mai','Juin',
-            'Juillet','Aout','Septembre','Octobre','Novembre','Decembre'],
-        monthNamesShort: ['Jan','Fev','Mar','Avr','Mai','Jun',
-            'Jul','Aou','Sep','Oct','Nov','Dec'],
-        dayNames: ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'],
-        dayNamesShort: ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'],
-        dayNamesMin: ['Di','Lu','Ma','Me','Je','Ve','Sa'],
+        monthNames: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin',
+            'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
+        monthNamesShort: ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jun',
+            'Jul', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec'],
+        dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+        dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+        dayNamesMin: ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'],
         weekHeader: 'Sm',
         dateFormat: 'dd-mm-yy',
     })
         //.on('changeDate', function(e) {
         // Revalidate the date field
         //$('#AppointmentForm').bootstrapValidator('revalidateField', 'date');
-        .on('change', function() {
+        .on('change', function () {
             $('#datePicker').valid();  // triggers the validation test on change
 
         });
 
     ////AppointmentForm//////////
-    $("#AppointmentFrm").validate({
+    $("#appointmentForm").validate({
         errorElement: "p",
-        submitHandler: function(){
-            var dataString = $("form#AppointmentFrm").serialize();
+        submitHandler: function () {
+            var dataString = $("form#appointmentForm").serialize();
             $.ajax({
                 type: "POST",
-                url: "appointmentsend.php",
+                url: "mail.php?subject=appointment",
                 cache: false,
                 data: dataString,
-                success:function(data)
-                {
-                    if(data==1)
-                    {
-                        $("#SuccessMessage").slideDown(500);
-                        $("#SuccessMessage").html("<div class='alert alert-success'><strong>Success!</strong> Your message has been sent to us.</div>");
-                        //document.getElementById("SuccessMessage").style.color='#FF0000';
-                        //document.getElementById('AppointmentFrm').reset();
-                        $("#AppointmentFrm")[0].reset();
-                        return false;
-
-                    }
-                    else
-                    {
-                        $("#ErrorMessage").slideDown(500);
-                        $("#ErrorMessage").html("<div class='alert alert-danger'><strong>Error!</strong> There was an error sending your message.</div>");
-                        //document.getElementById("ErrorMessage").style.color='#FF0000';
-                        //document.getElementById('AppointmentFrm').reset();
-                        $("#AppointmentFrm")[0].reset();
-                        return false;
-
-                    }
+                success: function (data) {
+                    $("#SuccessMessage").slideDown(500);
+                    $("#SuccessMessage").html("<div class='alert alert-success'><strong>Confirmé !</strong> Votre demande de rendez-vous a bien été transmise.</div>");
+                    //document.getElementById("SuccessMessage").style.color='#FF0000';
+                    //document.getElementById('appointmentForm').reset();
+                    $("#appointmentForm")[0].reset();
+                    return false;
                 },
+                error: function (error) {
+                    $("#ErrorMessage").slideDown(500);
+                    $("#ErrorMessage").html("<div class='alert alert-danger'><strong>Erreur !</strong> Une erreur est survenue.</div>");
+                    //document.getElementById("ErrorMessage").style.color='#FF0000';
+                    //document.getElementById('appointmentForm').reset();
+                    $("#appointmentForm")[0].reset();
+                    return false;
+
+                }
 
             });
             return false;
@@ -162,35 +156,31 @@ $(document).ready(function () {
     });
     ///AppointmentForm///////////
 
-    //////ContactForm////////
+    //////contactForm////////
     $("#ContactForm").validate({
         errorElement: "p",
-        submitHandler: function(){
+        submitHandler: function () {
             var dataString = $("form#ContactForm").serialize();
             $.ajax({
                 type: "POST",
-                url: "contactsend.php",
+                url: "mail.php",
                 cache: false,
                 data: dataString,
-                success:function(data)
-                {
-                    if(data==1)
-                    {
+                success: function (data) {
                         $("#ContactSuccessMessage").slideDown(500);
-                        $("#ContactSuccessMessage").html("<div class='alert alert-success'><strong>Success!</strong> Your message has been sent to us.</div>");
+                        $("#ContactSuccessMessage").html("<div class='alert alert-success'><strong>Confirmé !</strong> Votre message a bien été envoyé.</div>");
                         //document.getElementById("ContactSuccessMessage").style.color='#FF0000';
                         $("#ContactForm")[0].reset();
                         return false;
-                    }
-                    else
+                }, error: function (error) {
                     {
                         $("#ContactErrorMessage").slideDown(500);
-                        $("#ContactErrorMessage").html("<div class='alert alert-danger'><strong>Error!</strong> There was an error sending your message.</div>");
+                        $("#ContactErrorMessage").html("<div class='alert alert-danger'><strong>Erreur !</strong> Une erreur est survenue.</div>");
                         //document.getElementById("ContactErrorMessage").style.color='#FF0000';
                         $("#ContactForm")[0].reset();
                         return false;
                     }
-                },
+                }
 
             });
             return false;
@@ -198,7 +188,7 @@ $(document).ready(function () {
     });
 
     // portfolio 4 page function
-    $(window).load(function(){
+    $(window).load(function () {
         var $container = $('.blogmasonary');
         $container.isotope({
             layoutMode: 'masonry',
@@ -221,13 +211,13 @@ $(document).ready(function () {
             }
         });
 
-        $('.filter ul li a').click(function(){
+        $('.filter ul li a').click(function () {
             $('.filter .active').removeClass('active');
             $(this).addClass('active');
 
             var selector = $(this).attr('data-filter');
-            if(selector=="*") $(selector).children("a.fancybox").attr("data-fancybox-group","gallery" );
-            else	$(selector).children("a.fancybox").attr("data-fancybox-group",selector.substring(1) );
+            if (selector == "*") $(selector).children("a.fancybox").attr("data-fancybox-group", "gallery");
+            else $(selector).children("a.fancybox").attr("data-fancybox-group", selector.substring(1));
             $container.isotope({
                 filter: selector,
                 animationOptions: {
@@ -259,7 +249,7 @@ $(document).ready(function () {
     });
 
 });
-$(window).load(function() {
+$(window).load(function () {
 
     new WOW().init();
 });

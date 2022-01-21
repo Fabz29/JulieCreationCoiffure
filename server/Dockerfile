@@ -1,8 +1,15 @@
-FROM php:alpine
+FROM php:fpm
 
-COPY . /var/www
+RUN apt update
+RUN apt install -y --no-install-recommends ssmtp mailutils curl debconf apt-transport-https apt-utils build-essential acl mailutils wget git
 
-# Configuring nginx
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+WORKDIR /var/www
+
+RUN composer require phpmailer/phpmailer
+
+COPY ./mail.php /var/www
+
+EXPOSE 9000
+CMD ["php-fpm"]

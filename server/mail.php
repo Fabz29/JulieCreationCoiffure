@@ -37,6 +37,12 @@ $port = 587;
 if(isset($_GET['subject']) && $_GET['subject'] === 'appointment') {
     $subject = 'Demande de rendez-vous';
 
+    if($_POST['dateDesktop'] !== '') {
+        $date = \DateTime::createFromFormat('Y-m-d', $_POST['dateDesktop']);
+    } elseif ($_POST['dateMobile'] !== ''){
+        $date = \DateTime::createFromFormat('Y-m-d', $_POST['dateMobile']);
+    }
+
     $bodyHtml = '<h1>Demande de rendez-vous</h1>
     <ul>
         <li>
@@ -49,7 +55,7 @@ if(isset($_GET['subject']) && $_GET['subject'] === 'appointment') {
         	Téléphone: <a href="tel:' . $_POST['phone'] . '">' . $_POST['phone'] . '</a> 
 		</li>
       	<li>
-        	Date: ' . $_POST['date'] . ' à ' . $_POST['time'] . '
+        	Date: ' . $date->format('d-m-Y') . ' à ' . $_POST['time'] . '
 		</li>
       	<li>
         	Description: ' . $_POST['description'] . '

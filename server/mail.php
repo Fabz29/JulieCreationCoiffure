@@ -34,12 +34,12 @@ $passwordSmtp = $_ENV['SMTP_PASSWORD'];
 $host = 'email-smtp.eu-west-3.amazonaws.com';
 $port = 587;
 
-if(isset($_GET['subject']) && $_GET['subject'] === 'appointment') {
+if (isset($_GET['subject']) && $_GET['subject'] === 'appointment') {
     $subject = 'Demande de rendez-vous';
 
-    if($_POST['dateDesktop'] !== '') {
+    if ($_POST['dateDesktop'] !== '') {
         $date = \DateTime::createFromFormat('Y-m-d', $_POST['dateDesktop']);
-    } elseif ($_POST['dateMobile'] !== ''){
+    } elseif ($_POST['dateMobile'] !== '') {
         $date = \DateTime::createFromFormat('Y-m-d', $_POST['dateMobile']);
     }
 
@@ -104,7 +104,10 @@ try {
     $mail->isHTML(true);
     $mail->Subject = $subject;
     $mail->Body = $bodyHtml;
-    $mail->Send();
+
+    if (isset($_POST['email'])) {
+        $mail->Send();
+    }
     echo "1", PHP_EOL;
 } catch (phpmailerException $e) {
     echo "An error occurred. {$e->errorMessage()}", PHP_EOL; //Catch errors from PHPMailer.
